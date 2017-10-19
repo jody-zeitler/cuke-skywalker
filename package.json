@@ -1,0 +1,38 @@
+{
+  "name": "cuke-slicer",
+  "version": "1.0.0",
+  "description": "Distribute Cucumber features to workers run in parallel",
+  "keywords": [
+    "cucumber"
+  ],
+  "license": "MIT",
+  "author": "Jody Zeitler <jody.zeitler@gmail.com>",
+  "main": "index.js",
+  "bin": {
+    "cuke-slicer": "./bin/cuke-slicer.js",
+    "cuke-slicer-report": "./bin/cuke-slicer-report.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:redbrick-health/cuke-slicer.git"
+  },
+  "scripts": {
+    "test": "./bin/cuke-slicer.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "cucumber-html-reporter": "^0.4.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "chromedriver": "^2.33.1",
+    "cucumber": "^3.0.5",
+    "selenium-webdriver": "^3.6.0"
+  },
+  "peerDependencies": {
+    "cucumber": "^2.0.0 || ^3.0.0"
+  },
+  "engines": {
+    "node": ">=7.6.0"
+  }
+}
