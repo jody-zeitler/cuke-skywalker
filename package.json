@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.0",
-    "cucumber-html-reporter": "^0.4.0",
+    "cucumber-html-reporter": "^3.0.4",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
