@@ -1,6 +1,6 @@
 {
   "name": "cuke-slicer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Distribute Cucumber features to workers run in parallel",
   "keywords": [
     "cucumber"
