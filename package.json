@@ -1,5 +1,5 @@
 {
-  "name": "cuke-slicer",
+  "name": "cuke-skywalker",
   "version": "1.0.1",
   "description": "Distribute Cucumber features to workers run in parallel",
   "keywords": [
@@ -9,15 +9,15 @@
   "author": "Jody Zeitler <jody.zeitler@gmail.com>",
   "main": "index.js",
   "bin": {
-    "cuke-slicer": "./bin/cuke-slicer.js",
-    "cuke-slicer-report": "./bin/cuke-slicer-report.js"
+    "cuke-skywalker": "./bin/cuke-skywalker.js",
+    "cuke-skywalker-report": "./bin/cuke-skywalker-report.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:redbrick-health/cuke-slicer.git"
+    "url": "git@github.com:redbrick-health/cuke-skywalker.git"
   },
   "scripts": {
-    "test": "./bin/cuke-slicer.js"
+    "test": "./bin/cuke-skywalker.js"
   },
   "dependencies": {
     "bluebird": "^3.5.0",

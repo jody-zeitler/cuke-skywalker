@@ -1,5 +1,5 @@
-cuke-slicer
-===========
+cuke-skywalker
+==============
 
 Distribute Cucumber features to workers run in parallel.
 
@@ -9,14 +9,14 @@ Installation
 This module requires a peerDependency of the `cucumber` package.
 
 ```shell
-npm install --save-dev cucumber cuke-slicer
+npm install --save-dev cucumber cuke-skywalker
 ```
 
 Usage
 -----
 
 ```shell
-./node_modules/.bin/cuke-slicer --tags '@this and not @that'
+./node_modules/.bin/cuke-skywalker --tags '@this and not @that'
 ```
 
 All arguments will be passed directly to the workers. Features will be pre-filtered to get an accurate
@@ -51,7 +51,7 @@ HTML Report
 `cucumber-html-reporter` is available to generate a decent-looking HTML reporter across all workers.
 
 ```shell
-./node_modules/.bin/cuke-slicer-report
+./node_modules/.bin/cuke-skywalker-report
 ```
 
 `CUCUMBER_PARALLEL_REPORT_DIR` is used for the reports directory containing the worker output, and is also where
