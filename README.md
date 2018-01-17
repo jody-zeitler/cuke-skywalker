@@ -1,6 +1,6 @@
 cuke-skywalker
 ==============
-![Cucumber Skywalker](images/cukeSkywalker.jpg)
+![Cucumber Skywalker](https://i.imgur.com/4JfYnAJ.jpg)
 
 Distribute Cucumber features to workers run in parallel.
 
