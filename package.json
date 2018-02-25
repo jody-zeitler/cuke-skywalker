@@ -21,16 +21,16 @@
   },
   "dependencies": {
     "bluebird": "^3.5.0",
-    "cucumber-html-reporter": "^3.0.4",
+    "cucumber-html-reporter": "^4.0.1",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
     "chromedriver": "^2.33.1",
-    "cucumber": "^3.0.5",
+    "cucumber": "^4.0.0",
     "selenium-webdriver": "^3.6.0"
   },
   "peerDependencies": {
-    "cucumber": "^2.0.0 || ^3.0.0"
+    "cucumber": "2 - 4"
   },
   "engines": {
     "node": ">=7.6.0"
