@@ -17,7 +17,10 @@
     "url": "git@github.com:redbrick-health/cuke-skywalker.git"
   },
   "scripts": {
-    "test": "./bin/cuke-skywalker.js"
+    "test": "npm run test:tests; npm run test:workers; npm run test:report",
+    "test:report": "./bin/cuke-skywalker-report.js",
+    "test:tags": "./bin/cuke-skywalker.js --tags '@google and not @yahoo'",
+    "test:workers": "./bin/cuke-skywalker.js"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
