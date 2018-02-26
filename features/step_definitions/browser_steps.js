@@ -11,4 +11,10 @@ defineSupportCode(function({Given, When, Then}) {
 		const condition = seleniumWebdriver.until.elementLocated({css});
 		await this.driver.wait(condition, 5000);
 	});
+
+	Then(/^the "I'm Feeling Lucky" button is present$/, async function () {
+		const css = 'input[value="I\'m Feeling Lucky"]';
+		const condition = seleniumWebdriver.until.elementLocated({css});
+		await this.driver.wait(condition, 5000);
+	});
 });

@@ -31,7 +31,7 @@ async function main() {
 			jsonFile: combinedFile,
 			output: outputFile,
 			reportSuiteAsScenarios: true,
-			launchReport: true,
+			launchReport: false,
 			metadata: {
 				"Test Environment": ENVIRONMENT,
 				"Browser": PLATFORM,
