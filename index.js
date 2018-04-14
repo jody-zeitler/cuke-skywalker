@@ -66,6 +66,7 @@ async function enumerateFeatures() {
 			cwd: cli.cwd,
 			eventBroadcaster,
 			featurePaths,
+			order: 'defined',
 			pickleFilter
 		});
 		const features = new Set(testCases.map(t => t.uri));
