@@ -7,6 +7,10 @@
   ],
   "license": "MIT",
   "author": "Jody Zeitler <jody.zeitler@gmail.com>",
+  "contributors": [
+    "Kyohei Yazawa <kyoheiyazawa@gmail.com>",
+    "Tim Mader-Brown <tomatobrown@gmail.com>"
+  ],
   "main": "index.js",
   "bin": {
     "cuke-skywalker": "./bin/cuke-skywalker.js",
