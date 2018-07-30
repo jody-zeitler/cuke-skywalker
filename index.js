@@ -79,7 +79,7 @@ async function uniform(features, argv) {
 	return Promise.map(
 		distributeFeatures(features),
 		(chunk, index) => spawnWorker(chunk, argv, path.join(REPORT_DIR, `worker-${index}.json`)).reflect()
-);
+	);
 }
 
 async function roundrobin(features, argv) {
@@ -140,44 +140,44 @@ function distributeFeatures(features) {
 function spawnWorker(features, argv, outfile) {
 	return new Promise((resolve, reject) => {
 		const worker = child_process.spawn(CUCUMBER_JS_PATH, [
-				...argv,
+			...argv,
 			'--format', `json:${outfile}`,
 			...features
-], {
-		shell: true
-	});
-	let stderrBuffer = '';
-	let stdoutBuffer = '';
-	worker.stderr.on('data', (data) => {
-		stderrBuffer += data;
-});
-	worker.stdout.on('data', (data) => {
-		stdoutBuffer += data;
-});
-	worker.on('error', (error) => {
-		reject(error);
-});
-	worker.on('exit', (code, signal) => {
-		if (code) {
-			reject(new WorkerError(`worker exited with code ${code}`, code, stderrBuffer, stdoutBuffer));
-		} else {
-			resolve([stdoutBuffer, stderrBuffer]);
-}
-});
-})
-.tap(([stdout, stderr]) => {
+		], {
+			shell: true
+		});
+		let stderrBuffer = '';
+		let stdoutBuffer = '';
+		worker.stderr.on('data', (data) => {
+			stderrBuffer += data;
+		});
+		worker.stdout.on('data', (data) => {
+			stdoutBuffer += data;
+		});
+		worker.on('error', (error) => {
+			reject(error);
+		});
+		worker.on('exit', (code, signal) => {
+			if (code) {
+				reject(new WorkerError(`worker exited with code ${code}`, code, stderrBuffer, stdoutBuffer));
+			} else {
+				resolve([stdoutBuffer, stderrBuffer]);
+			}
+		});
+	})
+	.tap(([stdout, stderr]) => {
 		console.log(stdout);
-})
-.catch((error) => {
+	})
+	.catch((error) => {
 		if (error.stdout) {
-		console.log(error.stdout);
-	}
-	if (error.stderr) {
-		console.error(error.stderr);
-	}
-	console.error(error.stack);
-	throw error;
-});
+			console.log(error.stdout);
+		}
+		if (error.stderr) {
+			console.error(error.stderr);
+		}
+		console.error(error.stack);
+		throw error;
+	});
 }
 
 class WorkerError extends Error {
@@ -192,8 +192,8 @@ class WorkerError extends Error {
 module.exports = function () {
 	main().catch((error) => {
 		console.error(error.stack);
-	process.exit(1);
-});
+		process.exit(1);
+	});
 };
 
 if (require.main === module) {
