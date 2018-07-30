@@ -12,6 +12,7 @@ const {getWorkerJson} = require('./util');
 const ROUNDROBIN = 'roundrobin';
 const UNIFORM = 'uniform';
 
+const CUCUMBER_JS_PATH = process.env.CUCUMBER_JS_PATH || './node_modules/.bin/cucumber-js';
 const NUM_WORKERS = parseInt(process.env.CUCUMBER_PARALLEL_WORKERS, 10) || 4;
 const REPORT_DIR = process.env.CUCUMBER_PARALLEL_REPORT_DIR || './reports';
 const DISTRIBUTION = process.env.CUCUMBER_PARALLEL_DISTRIBUTION === UNIFORM ? UNIFORM : ROUNDROBIN;
@@ -138,7 +139,7 @@ function distributeFeatures(features) {
 
 function spawnWorker(features, argv, outfile) {
 	return new Promise((resolve, reject) => {
-		const worker = child_process.spawn('./node_modules/.bin/cucumber-js', [
+		const worker = child_process.spawn(CUCUMBER_JS_PATH, [
 			...argv,
 			'--format', `json:${outfile}`,
 			...features
