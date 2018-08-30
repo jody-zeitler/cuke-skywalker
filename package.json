@@ -1,6 +1,6 @@
 {
   "name": "cuke-skywalker",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Distribute Cucumber features to workers run in parallel",
   "keywords": [
     "cucumber"
