@@ -40,12 +40,12 @@ Options
 
 Options are passed as environment variables.
 
-| Variable                       | Default                         | Description |
-| ------------------------------ | ----------                      | ----------- |
-| CUCUMBER_PARALLEL_WORKERS      | 4                               | Number of worker processes to distribute features to |
-| CUCUMBER_PARALLEL_REPORT_DIR   | ./reports                       | Output directory for worker output JSON files |
-| CUCUMBER_PARALLEL_DISTRIBUTION | roundrobin                      | Method for distributing features (roundrobin or uniform) |
-| CUCUMBER_JS_PATH               | ./node_modules/.bin/cucumber-js | Path to the cucumber-js bin |
+| Variable                       | Default                       | Description |
+| ------------------------------ | ----------                    | ----------- |
+| CUCUMBER_PARALLEL_WORKERS      | 4                             | Number of worker processes to distribute features to |
+| CUCUMBER_PARALLEL_REPORT_DIR   | reports                       | Output directory for worker output JSON files |
+| CUCUMBER_PARALLEL_DISTRIBUTION | roundrobin                    | Method for distributing features (roundrobin or uniform) |
+| CUCUMBER_JS_PATH               | node_modules/.bin/cucumber-js | Path to the cucumber-js bin |
 
 HTML Report
 -----------

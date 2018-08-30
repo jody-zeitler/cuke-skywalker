@@ -15,7 +15,7 @@ const ROUNDROBIN = 'roundrobin';
 const UNIFORM = 'uniform';
 
 const CUCUMBER_JS_PATH = process.env.CUCUMBER_JS_PATH ||
-	(IS_WINDOWS ? 'node_modules\\.bin\\cucumber-js.cmd' : './node_modules/.bin/cucumber-js');
+	(IS_WINDOWS ? 'node_modules\\.bin\\cucumber-js.cmd' : 'node_modules/.bin/cucumber-js');
 const NUM_WORKERS = parseInt(process.env.CUCUMBER_PARALLEL_WORKERS, 10) || 4;
 const REPORT_DIR = process.env.CUCUMBER_PARALLEL_REPORT_DIR || 'reports';
 const DISTRIBUTION = process.env.CUCUMBER_PARALLEL_DISTRIBUTION === UNIFORM ? UNIFORM : ROUNDROBIN;
