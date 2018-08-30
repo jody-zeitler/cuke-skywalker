@@ -143,9 +143,7 @@ function spawnWorker(features, argv, outfile) {
 			...argv,
 			'--format', `json:${outfile}`,
 			...features
-		], {
-			shell: true
-		});
+		]);
 		let stderrBuffer = '';
 		let stdoutBuffer = '';
 		worker.stderr.on('data', (data) => {
