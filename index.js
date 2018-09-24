@@ -1,6 +1,7 @@
 const Promise = require('bluebird');
 const child_process = require('child_process');
 const {Cli: CucumberCli} = require('cucumber');
+const ArgvParser = require('cucumber/lib/cli/argv_parser').default;
 const cucumberVersion = require('cucumber/package.json').version;
 const EventEmitter = require('events');
 const fs = require('fs');
@@ -111,8 +112,10 @@ async function roundrobin(features, argv) {
  * Wrap each argument in single quotes to preserve spaces.
  */
 function cleanupArgv(argv) {
-	const lastOptionIndex = _.findLastIndex(argv, (word) => word.startsWith('-'));
-	return argv.slice(2, lastOptionIndex + 2).map((arg) => `'${arg}'`);
+	const argSet = new Set(ArgvParser.parse(argv).args);
+	return argv.slice(2)
+		.filter(arg => !argSet.has(arg))
+		.map(arg => `'${arg}'`);
 }
 
 async function ensureReportDirectory() {
