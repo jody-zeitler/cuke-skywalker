@@ -54,10 +54,11 @@ async function enumerateFeatures() {
 			scenarioFilterOptions
 		} = configuration;
 		const scenarioFilter = new ScenarioFilter(scenarioFilterOptions);
+		const cwd = `${process.cwd()}/`;
 		return getFeatures({
 			featurePaths,
 			scenarioFilter
-		}).map(f => f.uri);
+		}).map(f => f.uri.replace(cwd, ''));
 	} else { // Cucumber 3
 		const PickleFilter = require('cucumber/lib/pickle_filter').default;
 		const {getTestCasesFromFilesystem} = require('cucumber/lib/cli/helpers');
@@ -109,13 +110,10 @@ async function roundrobin(features, argv) {
 
 /**
  * Trim 'node ./index.js' and feature arguments.
- * Wrap each argument in single quotes to preserve spaces.
  */
 function cleanupArgv(argv) {
 	const argSet = new Set(ArgvParser.parse(argv).args);
-	return argv.slice(2)
-		.filter(arg => !argSet.has(arg))
-		.map(arg => `'${arg}'`);
+	return argv.slice(2).filter(arg => !argSet.has(arg));
 }
 
 async function ensureReportDirectory() {
