@@ -144,11 +144,20 @@ function distributeFeatures(features) {
 }
 
 function spawnWorker(features, argv, outfile) {
+	// If argv targets specific scenario lines within these features,
+	// go with those instead of running the features entirely.
+	const expandedFeatures = _.flatMap(features, feature => {
+		const argMatches = process.argv.filter(arg => arg.includes(feature));
+		if (argMatches.length > 0) {
+			return argMatches;
+		}
+		return feature;
+	});
 	return new Promise((resolve, reject) => {
 		const worker = child_process.spawn(CUCUMBER_JS_PATH, [
 			...argv,
 			'--format', `json:${outfile}`,
-			...features
+			...expandedFeatures
 		]);
 		let stderrBuffer = '';
 		let stdoutBuffer = '';
