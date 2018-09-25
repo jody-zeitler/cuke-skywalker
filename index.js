@@ -1,6 +1,7 @@
 const Promise = require('bluebird');
 const child_process = require('child_process');
 const {Cli: CucumberCli} = require('cucumber');
+const ArgvParser = require('cucumber/lib/cli/argv_parser').default;
 const cucumberVersion = require('cucumber/package.json').version;
 const EventEmitter = require('events');
 const fs = require('fs');
@@ -53,10 +54,11 @@ async function enumerateFeatures() {
 			scenarioFilterOptions
 		} = configuration;
 		const scenarioFilter = new ScenarioFilter(scenarioFilterOptions);
+		const cwd = `${process.cwd()}/`;
 		return getFeatures({
 			featurePaths,
 			scenarioFilter
-		}).map(f => f.uri);
+		}).map(f => f.uri.replace(cwd, ''));
 	} else { // Cucumber 3
 		const PickleFilter = require('cucumber/lib/pickle_filter').default;
 		const {getTestCasesFromFilesystem} = require('cucumber/lib/cli/helpers');
@@ -108,11 +110,10 @@ async function roundrobin(features, argv) {
 
 /**
  * Trim 'node ./index.js' and feature arguments.
- * Wrap each argument in single quotes to preserve spaces.
  */
 function cleanupArgv(argv) {
-	const lastOptionIndex = _.findLastIndex(argv, (word) => word.startsWith('-'));
-	return argv.slice(2, lastOptionIndex + 2).map((arg) => `'${arg}'`);
+	const argSet = new Set(ArgvParser.parse(argv).args);
+	return argv.slice(2).filter(arg => !argSet.has(arg));
 }
 
 async function ensureReportDirectory() {
@@ -141,11 +142,20 @@ function distributeFeatures(features) {
 }
 
 function spawnWorker(features, argv, outfile) {
+	// If argv targets specific scenario lines within these features,
+	// go with those instead of running the features entirely.
+	const expandedFeatures = _.flatMap(features, feature => {
+		const argMatches = process.argv.filter(arg => arg.includes(feature));
+		if (argMatches.length > 0) {
+			return argMatches;
+		}
+		return feature;
+	});
 	return new Promise((resolve, reject) => {
 		const worker = child_process.spawn(CUCUMBER_JS_PATH, [
 			...argv,
 			'--format', `json:${outfile}`,
-			...features
+			...expandedFeatures
 		]);
 		let stderrBuffer = '';
 		let stdoutBuffer = '';
