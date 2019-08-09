@@ -1,6 +1,6 @@
 {
   "name": "cuke-skywalker",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Distribute Cucumber features to workers run in parallel",
   "keywords": [
     "cucumber"
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:redbrick-health/cuke-skywalker.git"
+    "url": "git@github.com:jody-zeitler/cuke-skywalker.git"
   },
   "scripts": {
     "test": "./test.sh"
@@ -29,12 +29,12 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "chromedriver": "^2.33.1",
-    "cucumber": "^4.0.0",
+    "chromedriver": "^76.0.0",
+    "cucumber": "^5.1.0",
     "selenium-webdriver": "^3.6.0"
   },
   "peerDependencies": {
-    "cucumber": "2 - 4"
+    "cucumber": "2 - 5"
   },
   "engines": {
     "node": ">=7.6.0"
