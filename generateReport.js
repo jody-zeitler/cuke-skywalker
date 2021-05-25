@@ -1,5 +1,5 @@
 const Promise = require('bluebird');
-const reporter = require('cucumber-html-reporter');
+const reporter = require('@cucumber/cucumber-html-reporter');
 const fs = require('fs');
 const path = require('path');
 const {getWorkerJson} = require('./util');

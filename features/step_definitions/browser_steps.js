@@ -1,4 +1,4 @@
-const {defineSupportCode} = require('cucumber');
+const {defineSupportCode} = require('@cucumber/cucumber');
 const seleniumWebdriver = require('selenium-webdriver');
 
 defineSupportCode(function({Given, When, Then}) {

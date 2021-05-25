@@ -29,12 +29,9 @@
     "lodash": "^4.17.19"
   },
   "devDependencies": {
-    "chromedriver": "^80.0.1",
-    "cucumber": "^6.0.5",
+    "@cucumber/cucumber": "7.2.1",
+    "chromedriver": "90.0.1",
     "selenium-webdriver": "^3.6.0"
-  },
-  "peerDependencies": {
-    "cucumber": "2 - 6"
   },
   "engines": {
     "node": ">=8.3.0"

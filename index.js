@@ -1,8 +1,8 @@
 const Promise = require('bluebird');
 const child_process = require('child_process');
-const {Cli: CucumberCli} = require('cucumber');
-const ArgvParser = require('cucumber/lib/cli/argv_parser').default;
-const cucumberVersion = require('cucumber/package.json').version;
+const {Cli: CucumberCli} = require('@cucumber/cucumber');
+const ArgvParser = require('@cucumber/cucumber/lib/cli/argv_parser').default;
+const cucumberVersion = require('@cucumber/cucumber/package.json').version;
 const EventEmitter = require('events');
 const fs = require('fs');
 const _ = require('lodash');
@@ -47,8 +47,8 @@ async function enumerateFeatures() {
 	const configuration = await cli.getConfiguration();
 
 	if (/^2/.test(cucumberVersion)) {
-		const ScenarioFilter = require('cucumber/lib/scenario_filter').default;
-		const {getFeatures} = require('cucumber/lib/cli/helpers');
+		const ScenarioFilter = require('@cucumber/cucumber/lib/scenario_filter').default;
+		const {getFeatures} = require('@cucumber/cucumber/lib/cli/helpers');
 		const {
 			featurePaths,
 			scenarioFilterOptions
@@ -60,8 +60,8 @@ async function enumerateFeatures() {
 			scenarioFilter
 		}).map(f => f.uri.replace(cwd, ''));
 	} else { // Cucumber 3
-		const PickleFilter = require('cucumber/lib/pickle_filter').default;
-		const {getTestCasesFromFilesystem} = require('cucumber/lib/cli/helpers');
+		const PickleFilter = require('@cucumber/cucumber/lib/pickle_filter').default;
+		const {getTestCasesFromFilesystem} = require('@cucumber/cucumber/lib/cli/helpers');
 		const eventBroadcaster = new EventEmitter();
 		const {
 			featurePaths,

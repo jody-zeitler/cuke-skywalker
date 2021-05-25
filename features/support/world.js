@@ -1,5 +1,5 @@
 require('chromedriver');
-const {defineSupportCode} = require('cucumber');
+const {defineSupportCode} = require('@cucumber/cucumber');
 const seleniumWebdriver = require('selenium-webdriver');
 
 function World({attach}) {

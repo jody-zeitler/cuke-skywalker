@@ -1,4 +1,4 @@
-const {defineSupportCode, Status} = require('cucumber');
+const {defineSupportCode, Status} = require('@cucumber/cucumber');
 
 defineSupportCode(function ({After}) {
 	After({timeout: 10 * 1000}, async function ({result, status}) {
